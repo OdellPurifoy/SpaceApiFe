@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from 'react';
+import Header from './components/ui/Header';
+import PlanetGrid from './components/planets/PlanetGrid';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import './App.css';
+import axios from 'axios';
+
+
+const App = () => {
+  const [planets, setPlanets] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
+
+  useEffect(() => {
+    const fetchPlanets = async () => {
+      const result = await axios(`http://localhost:4000/api/v1/planets`)
+
+      // console.log(result.data)
+      setPlanets(result.data)
+      setIsLoading(false)
+    }
+
+    fetchPlanets()
+  }, [])
+
+
+  return ( <div className='container'>
+            <Header />
+            <PlanetGrid isLoading={isLoading} planets={planets} />
+           </div>
+         )
 }
 
 export default App;
