@@ -19,7 +19,7 @@ a {
 .container {
   max-width: 1100px;
   margin: auto;
-  padding: 0 20px
+  padding: 0 20px;
 }
 
 .btn {
@@ -48,7 +48,7 @@ header img {
 }
 
 .search {
-  height: 100px
+  height: 100px;
 }
 
 input[type='text'] {
@@ -65,6 +65,13 @@ input[type='text'] {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
+}
+
+.card {
+  cursor: pointer;
+  background-color: transparent;
+  height: 300px;
+  perspective: 1000px;
 }
 
 .card h1 {
