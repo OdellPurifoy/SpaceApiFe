@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/ui/Header';
+import Navbar from './components/ui/Navbar';
 import Search from './components/ui/Search';
 import PlanetGrid from './components/planets/PlanetGrid';
 
@@ -27,11 +28,15 @@ const App = () => {
 
 
   return (
-    <div className='container'>
-      <Header />
-      <Search getQuery={(q) => setQuery(q)} />
-      <PlanetGrid isLoading={isLoading} planets={planets} />
+    <div>
+      <Navbar />
+      <div className='container'>
+        <Header />
+        <Search getQuery={(q) => setQuery(q)} />
+        <PlanetGrid isLoading={isLoading} planets={planets} />
+      </div>
     </div>
+
   )
 }
 
